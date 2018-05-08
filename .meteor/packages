@@ -25,3 +25,5 @@ static-html
 session
 accounts-base
 accounts-password
+tap:i18n
+meteortesting:mocha
