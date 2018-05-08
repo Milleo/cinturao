@@ -6,7 +6,7 @@ class App extends Component{
   constructor(props){
     super(props)
   }
-
+  // @TODO Remove login check from here
   componentWillMount(){
     if(!!Meteor.userId === false){
       this.props.history.push("/login");
