@@ -2,7 +2,7 @@ import React, { Component } from "react"
 import { withRouter } from "react-router-dom"
 import Meteor from "meteor/meteor"
 
-class App extends Component{
+class AppLayout extends Component{
   constructor(props){
     super(props)
   }
@@ -19,4 +19,4 @@ class App extends Component{
   }
 }
 
-export default withRouter(App)
+export default withRouter(AppLayout)
