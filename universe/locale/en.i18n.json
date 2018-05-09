@@ -1,0 +1,25 @@
+{
+  "_locale": "en",
+  "_namespace": "",
+  "common": {
+    "email": "E-mail",
+    "name": "Name",
+    "password": "Password",
+    "back": "Back"
+  },
+  "login": {
+    "title": "Login",
+    "signin": "Sign In",
+    "forgot_password": {
+      "link": "Retrieve password"
+    },
+    "retrieve": {
+      "button": "Retrieve password",
+      "helpText": "Fill your e-mail in the field to retrieve your password"
+    },
+    "signup": {
+      "button": "Sign up",
+      "passwordConfirm": "Confirm your password"
+    }
+  }
+}

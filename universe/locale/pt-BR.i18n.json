@@ -1,0 +1,26 @@
+{
+  "_locale": "pt-BR",
+  "_namespace": "",
+  "common": {
+    "email": "E-mail",
+    "name": "Nome",
+    "password": "Senha",
+    "back": "Voltar"
+  },
+  "login": {
+    "title": "Login",
+    "signin": "Entrar",
+    "forgot_password": {
+      "link": "Esqueci minha senha"
+    },
+    "retrieve": {
+      "button": "Recuperar senha",
+      "helpText": "Insira seu e-mail no campo abaixo para recuperar sua senha"
+    },
+    "signup": {
+      "button": "Cadastrar",
+      "passwordConfirm": "Confirmação de senha"
+    }
+  }
+}
+
