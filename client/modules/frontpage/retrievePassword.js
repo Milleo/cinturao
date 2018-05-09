@@ -1,22 +1,20 @@
 import React, { Component } from "react"
 import { Divider, Form, Header, Segment } from "semantic-ui-react"
 import { Link } from "react-router-dom"
+import T from "../../components/translation"
 
 class RetrievePassword extends Component{
   render(){
-    return <div>
-      <Header as="h1" textAlign="center">Teste</Header>
-      <Segment>
-        <Form>
-          <p>Insira seu e-mail para recuperar sua senha</p>
-          <Form.Input type="email" placeholder="E-mail" />
-          <Form.Button fluid primary content="Recuperar Senha" icon="mail" />
-          <Form.Button fluid content="Cadastre-se" icon="pencil" />
-          <Divider />
-          <Link to="/login">Voltar</Link>
-        </Form>
-      </Segment>
-    </div>
+    return <Segment>
+      <Form>
+        <p><T>login.retrieve.helpText</T></p>
+        <Form.Input type="email" placeholder={i18n.__("common.email")} />
+        <Form.Button fluid primary content={i18n.__("login.retrieve.button")} icon="mail" />
+        <Form.Button fluid content={i18n.__("login.signup.button")} icon="pencil" />
+        <Divider />
+        <Link to="/login"><T>common.back</T></Link>
+      </Form>
+    </Segment>
   }
     
 }
