@@ -1,12 +1,23 @@
 import React, { Component } from "react"
 import { Button, Divider, Form, Header, Segment } from "semantic-ui-react"
 import SignUpValidator from "../../validators/signup.validator"
+import { browserHistory } from "react-router"
+import { Link } from "react-router-dom"
 
 class Signup extends Component{
   
   handleSignUpSubmit = () => {
     const errors = SignUpValidator(this.state);
-    console.log(errors);
+    
+    if(errors.length == 0){
+      Accounts.createUser({
+        email: this.state.email,
+        name: this.state.name,
+        password: this.state.password
+      });
+
+      this.props.history.push("/login")
+    }
   }
 
   handleValueChange = (e) => {
@@ -40,13 +51,13 @@ class Signup extends Component{
         </Form.Group>
         <Form.Group widths="equal">  
           <Form.Field>
-            <Button positive icon="check" content={i18n.__("login.signup.button")} fluid onClick={ this.handleSignUpSubmit } />
+            <Button type="button" positive icon="check" content={i18n.__("login.signup.button")} fluid onClick={ this.handleSignUpSubmit } />
+            <Button as={Link} to="/login" icon="chevron left" content={i18n.__("common.back")} fluid />
           </Form.Field>
         </Form.Group>
       </Form>
     </Segment>
   }
-    
 }
 
 export default Signup

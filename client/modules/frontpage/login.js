@@ -5,8 +5,18 @@ import T from "../../components/translation"
 import validator from "validator"
 
 class Login extends Component{
-  handleSignIn = () => {
-    console.log(validator.isEmail(this.state.login));
+  
+  handleSignIn = (e) => {
+    e.preventDefault()
+    const history = this.props.history
+    
+    Meteor.loginWithPassword(this.state.login, this.state.password, function(error){
+      if(!error){
+        history.push("/")
+      }else{
+        console.log(error.message)
+      }
+    })
   }
 
   handleValueChange = (e) => {
