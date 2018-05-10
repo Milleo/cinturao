@@ -1,10 +1,8 @@
 import React, { Component } from "react"
-import { BrowserRouter, Switch, Route } from "react-router-dom"
+import { BrowserRouter, Switch, Redirect, Route } from "react-router-dom"
 import LoginLayout from "./layouts/loginLayout"
-import Login from "./modules/frontpage/login"
-import SignUp from "./modules/frontpage/signup"
-import RetrievePassword from "./modules/frontpage/retrievePassword"
 import AppLayout from "./layouts/appLayout"
+import NoMatchLayout from "./layouts/noMatchLayout"
 import Dashboard from "./modules/dashboard"
 import i18n from "meteor/universe:i18n"
 
@@ -35,6 +33,11 @@ class AppRouter extends Component {
     });
   }
 
+  handleLogout(){
+    Meteor.logout()
+    history.push("/login")
+  }
+
   render(){
     if(!this.state.ready){
       this.loadTranslations()
@@ -44,14 +47,17 @@ class AppRouter extends Component {
       {this.state.ready && 
         <BrowserRouter>
           <Switch>
-            <LoginLayout langChangeCallback={this.langChange} messages={ this.state.messages }>
-              <Route path="/login" component={Login} />
-              <Route path="/forgot_password" component={RetrievePassword} />
-              <Route path="/signup" component={SignUp} />
-            </LoginLayout>
-            <AppLayout>
-              <Route path="/" exact component={Dashboard} />
-            </AppLayout>
+            <Route path="/login" component={LoginLayout} langChangeCallback={this.langChange} />
+            <Route path="/forgot_password" component={LoginLayout} langChangeCallback={this.langChange} />
+            <Route path="/signup" component={LoginLayout} langChangeCallback={this.langChange} />
+            { (Meteor.userId())?
+              <AppLayout langChangeCallback={this.langChange} handleLogout={this.handleLogout}>
+                <Route path="/" exact component={Dashboard} />
+                <Route component={NoMatchLayout} />
+              </AppLayout>:
+              <Redirect to="/login" />
+            }
+            <Route component={NoMatchLayout} />
           </Switch>
         </BrowserRouter>
       }

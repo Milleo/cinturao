@@ -20,7 +20,7 @@ class Signup extends Component{
     const form = {
       "name": {
         label: i18n.__("common.name"),
-        rules: ["required", "isLength[10]"],
+        rules: ["required" ],
         value: this.state.name
       },
       "email": {
@@ -48,7 +48,7 @@ class Signup extends Component{
         password: this.state.password
       });
 
-      this.props.history.push("/login", "AAAAAA")
+      this.props.history.push("/login", { messages: { type: "success", content: i18n.__("login.signup.successMessage") } })
     }else{
       this.setState({ messages: { type: "error", content: result.errors }})
     }

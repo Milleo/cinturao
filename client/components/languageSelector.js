@@ -20,6 +20,9 @@ class LanguageSelector extends Component {
   }
 
   render(){
+    if(this.props.spaced == false)
+      return <Dropdown item options={this.languages} compact defaultValue={i18n.getLocale()} onChange={ (e, value) => this.props.onChangeCallback(value) } />
+
     return <Segment basic floated="right" textAlign="right">
       <Dropdown
         selection
