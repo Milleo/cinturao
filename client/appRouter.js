@@ -44,7 +44,7 @@ class AppRouter extends Component {
       {this.state.ready && 
         <BrowserRouter>
           <Switch>
-            <LoginLayout langChangeCallback={this.langChange}>
+            <LoginLayout langChangeCallback={this.langChange} messages={ this.state.messages }>
               <Route path="/login" component={Login} />
               <Route path="/forgot_password" component={RetrievePassword} />
               <Route path="/signup" component={SignUp} />

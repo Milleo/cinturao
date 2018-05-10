@@ -1,22 +1,56 @@
 import React, { Component } from "react"
 import { Button, Divider, Form, Header, Segment } from "semantic-ui-react"
-import SignUpValidator from "../../validators/signup.validator"
 import { browserHistory } from "react-router"
 import { Link } from "react-router-dom"
+import Validator from "../../libs/validator"
+import Messages from "../../components/messages"
 
 class Signup extends Component{
-  
-  handleSignUpSubmit = () => {
-    const errors = SignUpValidator(this.state);
+  constructor(props){
+    super(props)
     
-    if(errors.length == 0){
+    this.state = {
+      "name": "",
+      "email": "",
+      "password": "",
+      "confirmPassword": ""
+    }
+  } 
+  handleSignUpSubmit = () => {
+    const form = {
+      "name": {
+        label: i18n.__("common.name"),
+        rules: ["required", "isLength[10]"],
+        value: this.state.name
+      },
+      "email": {
+        label: i18n.__("common.email"),
+        rules: ["required", "isEmail"],
+        value: this.state.email
+      },
+      "password": {
+        label: i18n.__("common.password"),
+        rules: ["required", "isLength[8,60]"],
+        value: this.state.password
+      },
+      "confirmPassword": {
+        label: i18n.__("login.signup.passwordConfirm"),
+        rules: ["required", "equals[password]"],
+        value: this.state.confirmPassword 
+      }
+    }
+
+    const result = Validator(form)
+    if(result.valid){    
       Accounts.createUser({
         email: this.state.email,
         name: this.state.name,
         password: this.state.password
       });
 
-      this.props.history.push("/login")
+      this.props.history.push("/login", "AAAAAA")
+    }else{
+      this.setState({ messages: { type: "error", content: result.errors }})
     }
   }
 
@@ -29,6 +63,7 @@ class Signup extends Component{
   render(){
     return <Segment>
       <Form>
+        { this.state.messages && <Messages messages={ this.state.messages } /> }
         <Form.Group widths="equal">  
           <Form.Field>
             <Form.Input name="name" label={i18n.__("common.name")} fluid  onChange={ this.handleValueChange }/>
@@ -52,6 +87,10 @@ class Signup extends Component{
         <Form.Group widths="equal">  
           <Form.Field>
             <Button type="button" positive icon="check" content={i18n.__("login.signup.button")} fluid onClick={ this.handleSignUpSubmit } />
+          </Form.Field>
+        </Form.Group>
+        <Form.Group widths="equal">
+          <Form.Field>
             <Button as={Link} to="/login" icon="chevron left" content={i18n.__("common.back")} fluid />
           </Form.Field>
         </Form.Group>

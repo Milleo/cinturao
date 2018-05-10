@@ -10,17 +10,27 @@
   "login": {
     "title": "Login",
     "signin": "Entrar",
+    "invalidLogin": "Usuário ou senha inválidos",
     "forgot_password": {
       "link": "Esqueci minha senha"
     },
     "retrieve": {
       "button": "Recuperar senha",
-      "helpText": "Insira seu e-mail no campo abaixo para recuperar sua senha"
+      "helpText": "Insira seu e-mail no campo abaixo para recuperar sua senha",
+      "successMessage": "Enviamos para sua conta de e-mail uma mensagem contendo um link para você redefinir sua senha",
+      "userNotFound": "Usuário não encontrado"
     },
     "signup": {
       "button": "Cadastrar",
       "passwordConfirm": "Confirmação de senha"
     }
+  },
+  "validations":{
+    "required": "O campo {$label} é obrigatório",
+    "invalidEmail": "O campo {$label} precisa ter um e-mail válido",
+    "lengthMin": "O campo {$label} precisa ter no mínimo {$min} caracteres",
+    "lengthMinMax": "O campo {$label} precisa ter entre {$min} e {$max} caracteres",
+    "equals": "O campo {$label} não confere com o campo {$target}"
   }
 }
 
