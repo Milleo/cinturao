@@ -22,8 +22,13 @@
     },
     "signup": {
       "button": "Cadastrar",
-      "passwordConfirm": "Confirmação de senha"
+      "passwordConfirm": "Confirmação de senha",
+      "successMessage": "Cadastro realizado com sucesso, prossiga para o login"
     }
+  },
+  "menu": {
+    "main": "Início",
+    "logout": "Sair"
   },
   "validations":{
     "required": "O campo {$label} é obrigatório",

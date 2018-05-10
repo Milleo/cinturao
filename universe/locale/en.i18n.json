@@ -10,16 +10,31 @@
   "login": {
     "title": "Login",
     "signin": "Sign In",
+    "invalidLogin": "Username or password invalid",
     "forgot_password": {
       "link": "Retrieve password"
     },
     "retrieve": {
       "button": "Retrieve password",
-      "helpText": "Fill your e-mail in the field to retrieve your password"
+      "helpText": "Fill your e-mail in the field to retrieve your password",
+      "successMessage": "A message was sent to your e-mail address to redefine your password",
+      "userNotFound": "Invalid username"
     },
     "signup": {
       "button": "Sign up",
-      "passwordConfirm": "Confirm your password"
+      "passwordConfirm": "Confirm your password",
+      "successMessage": "You successfully signed up, proceed to login"
     }
+  },
+  "menu": {
+    "main": "Home",
+    "logout": "Sign out"
+  },
+  "validations":{
+    "required": "The field {$label} is required",
+    "invalidEmail": "The field {$label} needs to have an valid e-mail address",
+    "lengthMin": "The field {$label} must have at leat {$min} chars",
+    "lengthMinMax": "The field {$label} must have between {$min} and {$max} chars",
+    "equals": "The field {$label} doesn't matches the field {$target}"
   }
 }
