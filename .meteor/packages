@@ -27,3 +27,4 @@ accounts-base
 accounts-password
 meteortesting:mocha
 universe:i18n
+accounts-ui
