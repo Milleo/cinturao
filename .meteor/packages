@@ -28,3 +28,4 @@ accounts-password
 meteortesting:mocha
 universe:i18n
 accounts-ui
+react-meteor-data
