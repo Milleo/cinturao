@@ -1,5 +1,5 @@
 import React, { Component } from "react"
-import { Divider, Form, Header, Segment } from "semantic-ui-react"
+import { Button, Divider, Form, Header, Segment } from "semantic-ui-react"
 import { Link } from "react-router-dom"
 import T from "../../components/translation"
 import Messages from "../../components/messages"
@@ -50,7 +50,7 @@ class RetrievePassword extends Component{
         <p><T>login.retrieve.helpText</T></p>
         <Form.Input type="email" placeholder={i18n.__("common.email")} name="login" onChange={this.handleValueChange} />
         <Form.Button fluid primary content={i18n.__("login.retrieve.button")} icon="mail" onClick={ this.handleSubmit } />
-        <Form.Button fluid content={i18n.__("login.signup.button")} icon="pencil" />
+        <Button as={Link} to="/login" fluid content={i18n.__("login.signup.button")} icon="pencil" />
         <Divider />
         <Link to="/login"><T>common.back</T></Link>
       </Form>
