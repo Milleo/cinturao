@@ -2,6 +2,9 @@ import React, { Component } from "react"
 import { BrowserRouter, Switch, Redirect, Route } from "react-router-dom"
 import LoginLayout from "./layouts/loginLayout"
 import AppLayout from "./layouts/appLayout"
+import Login from "./modules/frontpage/login"
+import RetrievePassword from "./modules/frontpage/retrievePassword"
+import Signup from "./modules/frontpage/signup"
 import NoMatchLayout from "./layouts/noMatchLayout"
 import Dashboard from "./modules/dashboard"
 import i18n from "meteor/universe:i18n"
@@ -47,17 +50,17 @@ class AppRouter extends Component {
       {this.state.ready && 
         <BrowserRouter>
           <Switch>
-            <Route path="/login" component={LoginLayout} langChangeCallback={this.langChange} />
-            <Route path="/forgot_password" component={LoginLayout} langChangeCallback={this.langChange} />
-            <Route path="/signup" component={LoginLayout} langChangeCallback={this.langChange} />
             { (Meteor.userId())?
               <AppLayout langChangeCallback={this.langChange} handleLogout={this.handleLogout}>
                 <Route path="/" exact component={Dashboard} />
-                <Route component={NoMatchLayout} />
               </AppLayout>:
-              <Redirect to="/login" />
+              <LoginLayout>
+                <Route path="/login" component={Login} langChangeCallback={this.langChange} />
+                <Route path="/forgot_password" component={RetrievePassword} langChangeCallback={this.langChange} />
+                <Route path="/signup" component={Signup} langChangeCallback={this.langChange} />
+                <Redirect to="/login" />
+              </LoginLayout>
             }
-            <Route component={NoMatchLayout} />
           </Switch>
         </BrowserRouter>
       }
