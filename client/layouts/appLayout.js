@@ -21,15 +21,17 @@ class AppLayout extends Component{
     return <Container>
       <Menu>
         <Menu.Item as={Link} to="/"><T>menu.main</T></Menu.Item>
+        <Menu.Item as={Link} to="/training"><T>menu.training</T></Menu.Item>
+        <Menu.Item as={Link} to="/fight"><T>menu.fight</T></Menu.Item>
+        <Menu.Item as={Link} to="/sponsors"><T>menu.sponsors</T></Menu.Item>
         <Menu.Menu position="right">
           <LanguageSelector onChangeCallback={this.props.langChangeCallback} spaced={false} />
           <Menu.Item name="logout" onClick={this.props.handleLogout}><Icon name="sign out" /><T>menu.logout</T></Menu.Item>
         </Menu.Menu>
       </Menu>
       <section id="main">
-        <Progress value={profile.xp} total={100} progress>
-          Level { profile.level } 
-        </Progress>
+        <Progress value={profile.stamina} total={100} color="red" size="tiny">Stamina</Progress>
+        <Progress value={profile.xp} total={100} size="tiny">Level { profile.level } </Progress>
         {this.props.children}
       </section>
     </Container>

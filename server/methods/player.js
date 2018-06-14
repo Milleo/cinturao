@@ -3,6 +3,8 @@ calculateLevel = ( { level, xp, xpTotal, stamina }, sumPoints ) => {
   xp += sumPoints
 
   stamina = stamina - 20
+  if(stamina < 0)
+    return false;
 
   if(xp > 100){
     level++
@@ -25,20 +27,22 @@ Meteor.methods({
       profile.stamina = 100
 
     const result = calculateLevel( profile,  TRAINING_FACTOR )
-    const newLevel = result.level
-    const newXp = result.xp 
-    const newXpTotal = result.xpTotal 
-    const newStamina = result.stamina
+    if(result != false){
+      const newLevel = result.level
+      const newXp = result.xp 
+      const newXpTotal = result.xpTotal 
+      const newStamina = result.stamina
 
-    Meteor.users.update(Meteor.userId(), {
-      $set: {
-        profile: {
-          "level": newLevel,
-          "xp": newXp,
-          "xpTotal": newXpTotal,
-          "stamina": newStamina
+      Meteor.users.update(Meteor.userId(), {
+        $set: {
+          profile: {
+            "level": newLevel,
+            "xp": newXp,
+            "xpTotal": newXpTotal,
+            "stamina": newStamina
+          }
         }
-      }
-    })
+      })
+    }
   }
-})
+});

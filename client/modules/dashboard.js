@@ -10,7 +10,7 @@ class Dashboard extends Component{
   render(){
     return <div>
       <h1>Dashboard</h1>
-      <Button content="Teste" onClick={this.training} />
+      <Button content="Treinar" onClick={this.training} />
     </div>
   }
 }

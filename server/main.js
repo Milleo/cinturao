@@ -1,5 +1,7 @@
-import { Meteor } from 'meteor/meteor';
+import { Meteor } from "meteor/meteor";
 
 Meteor.startup(() => {
-  // code to run on server at startup
+  Meteor.setInterval(() => {
+    Meteor.users.update({ "profile.stamina": { $lt: 100 }}, { $inc: { "profile.stamina": 10 } } );
+  }, 1000);  
 });
