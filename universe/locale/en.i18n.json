@@ -5,7 +5,8 @@
     "email": "E-mail",
     "name": "Name",
     "password": "Password",
-    "back": "Back"
+    "back": "Back",
+    "random": "Randomize"
   },
   "login": {
     "title": "Login",
@@ -28,7 +29,33 @@
   },
   "menu": {
     "main": "Home",
-    "logout": "Sign out"
+    "logout": "Sign out",
+    "training": "Training",
+    "fight": "Fight",
+    "sponsors": "Sponsors"
+
+  },
+  "player": {
+    "register": {
+      "title": "Register your player",
+      "weight": "Weight",
+      "age": "Age",
+      "years": "Years",
+      "gender": "Gender",
+      "skills": "Skills",
+      "playerInfo": "Player info",
+      "endurance": "Endurance",
+      "strenght": "Strength",
+      "reflexes": "Reflexes",
+      "genders": {
+        "male": "Male",
+        "female": "Female"
+      },
+      "message": {
+        "points" : "You have {$points} points to distribute between the player skills"
+      }
+
+    }
   },
   "validations":{
     "required": "The field {$label} is required",

@@ -1,5 +1,6 @@
 import React, { Component } from "react"
 import { BrowserRouter, Switch, Redirect, Route } from "react-router-dom"
+import { withTracker } from "meteor/react-meteor-data"
 import LoginLayout from "./layouts/loginLayout"
 import AppLayout from "./layouts/appLayout"
 import Login from "./modules/frontpage/login"
@@ -7,6 +8,10 @@ import RetrievePassword from "./modules/frontpage/retrievePassword"
 import Signup from "./modules/frontpage/signup"
 import NoMatchLayout from "./layouts/noMatchLayout"
 import Dashboard from "./modules/dashboard"
+import Sponsors from "./modules/sponsors"
+import Fight from "./modules/fight"
+import Training from "./modules/training"
+import PlayerRegister from "./modules/player/register"
 import i18n from "meteor/universe:i18n"
 
 class AppRouter extends Component {
@@ -53,6 +58,10 @@ class AppRouter extends Component {
             { (Meteor.userId())?
               <AppLayout langChangeCallback={this.langChange} handleLogout={this.handleLogout}>
                 <Route path="/" exact component={Dashboard} />
+                <Route path="/training" exact component={Training} />
+                <Route path="/sponsors" exact component={Sponsors} />
+                <Route path="/fight" exact component={Fight} />
+                <Route path="/player/register" exact component={PlayerRegister} />
               </AppLayout>:
               <LoginLayout>
                 <Route path="/login" component={Login} langChangeCallback={this.langChange} />

@@ -5,7 +5,9 @@
     "email": "E-mail",
     "name": "Nome",
     "password": "Senha",
-    "back": "Voltar"
+    "back": "Voltar",
+    "save": "Salvar",
+    "random": "Aleatório"
   },
   "login": {
     "title": "Login",
@@ -28,7 +30,32 @@
   },
   "menu": {
     "main": "Início",
-    "logout": "Sair"
+    "logout": "Sair",
+    "training": "Treinar",
+    "fight": "Lutar",
+    "sponsors": "Patrocinadores"
+  },
+  "player": {
+    "register": {
+      "title": "Cadastre seu jogador",
+      "weight": "Peso",
+      "age": "Idade",
+      "years": "Anos",
+      "gender": "Sexo",
+      "skills": "Atributos",
+      "points": "",
+      "playerInfo": "Informações gerais",
+      "endurance": "Resistência",
+      "strenght": "Força",
+      "reflexes": "Reflexos",
+      "genders": {
+        "male": "Masculino",
+        "female": "Feminino"
+      },
+      "message": {
+        "points" : "Você possui {$points} pontos para distruir entre os atributos do jogador"
+      }
+    }
   },
   "validations":{
     "required": "O campo {$label} é obrigatório",
