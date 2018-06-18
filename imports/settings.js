@@ -3,7 +3,10 @@ export const game = {
   "maxWeight": 100,
   "minAge": 18,
   "maxAge": 50,
-  "startingPoints": 15
+  "startingPoints": 15,
+  "minInitialSkill": 0,
+  "maxInitialSkill": 10,
+  "genders": ["male", "female"]
 };
 
 export const weightCategories = {

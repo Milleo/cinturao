@@ -28,13 +28,10 @@ class AppLayout extends Component{
     return <Container>
       <Menu>
         <Menu.Item as={Link} to="/"><Icon name="home" /><T>menu.main</T></Menu.Item>
-        {this.props.user.profile.status != "new" &&
-          <span> 
-            <Menu.Item as={Link} to="/training"><Icon name="refresh" /><T>menu.training</T></Menu.Item>
-            <Menu.Item as={Link} to="/fight"><Icon name="trophy" /><T>menu.fight</T></Menu.Item>
-            <Menu.Item as={Link} to="/sponsors"><Icon name="tag" /><T>menu.sponsors</T></Menu.Item>
-          </span>
-        }
+        { this.props.user.profile.status != "new" && <Menu.Item as={Link} to="/training"><Icon name="refresh" /><T>menu.training</T></Menu.Item> }
+        { this.props.user.profile.status != "new" && <Menu.Item as={Link} to="/fight"><Icon name="trophy" /><T>menu.fight</T></Menu.Item> }
+
+        { this.props.user.profile.status != "new" && <Menu.Item as={Link} to="/sponsors"><Icon name="tag" /><T>menu.sponsors</T></Menu.Item>}
         <Menu.Menu position="right">
           <LanguageSelector onChangeCallback={this.props.langChangeCallback} spaced={false} />
           <Menu.Item name="logout" onClick={this.props.handleLogout}><Icon name="sign out" /><T>menu.logout</T></Menu.Item>

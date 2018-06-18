@@ -1,3 +1,6 @@
+import validator from "validator"
+import PlayerRegisterValidator from "../validators/PlayerRegisterValidator";
+
 calculateLevel = ( { level, xp, xpTotal, stamina }, sumPoints ) => {
   xpTotal += sumPoints
   xp += sumPoints
@@ -12,7 +15,6 @@ calculateLevel = ( { level, xp, xpTotal, stamina }, sumPoints ) => {
   }
 
   return { level, xp, xpTotal, stamina }
-
 }
 
 Meteor.methods({
@@ -44,5 +46,23 @@ Meteor.methods({
         }
       })
     }
+  },
+  "player.register": (data) => {
+    const errors = PlayerRegisterValidator(data)
+    if(errors.length > 0)
+      throw new Meteor.Error(400, "Error 400: invalid request", errors)
+
+    Meteor.users.update(Meteor.userId(), {
+      $set: {
+        profile: {
+          skills: { endurance: data.endurance, reflexes: data.reflexes, strength: data.strength },
+          status: "active",
+          gender: data.gender,
+          weigth: data.weigth,
+          age: data.age
+        }
+      }
+    })
+    return {type: "success", content:"Registro realiazado com sucesso"}
   }
 });
