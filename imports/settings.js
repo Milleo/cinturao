@@ -9,6 +9,32 @@ export const game = {
   "genders": ["male", "female"]
 };
 
+export const locations = [
+  { name: "gym", rentalValue: 0.0, minSponsors: 0, minLevel: 1 }, 
+  { name: "local_stadium", rentalValue: 100.0, minSponsors: 0, minLevel: 5 }, 
+  { name: "municipal_stadium", rentalValue: 1000.0, minSponsors: 1, minLevel: 10 }, 
+  { name: "big_city_stadium", rentalValue: 10000.0, minSponsors: 2, minLevel: 20 }, 
+  { name: "sports_company_stadium", rentalValue: 500000.0, minSponsors: 4, minLevel: 30 }, 
+  { name: "international_statium", rentalValue: 1000000.0, minSponsors: 6, minLevel: 50 }
+];
+
+export const gyms = [
+  { name: "local_gym", bonusXP: 0.0 },
+  { name: "crossfit_gym", bonusXP: 0.1 },
+  { name: "boxing_experts_gym", bonusXP: 0.15 },
+  { name: "olympic_gym", bonusXP: 0.2 },
+  { name: "sports_company_gym", bonusXP: 0.25 },
+]
+
+export const sponsors = [
+  { name: "joe_bakery", monthPayment: 500.00, minLevel: 1 }, 
+  { name: "repairs_store", monthPayment: 1000.00, minLevel: 10 }, 
+  { name: "tech_store", monthPayment: 2000.00, minLevel: 16 }, 
+  { name: "market_store_chain", monthPayment: 4000.00, minLevel: 24 }, 
+  { name: "fast_food_store_chain", monthPayment: 10000.00, minLevel: 32 }, 
+  { name: "sports_company", monthPayment: 50000.00, minLevel: 60 } 
+];
+
 export const weightCategories = {
   "amateur": {
     "male": {
