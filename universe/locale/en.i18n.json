@@ -57,6 +57,44 @@
 
     }
   },
+  "dashboard": {
+    "title": "Dashboard",
+    "text": "Select one of the options bellow",
+    "cards": {
+      "training": { 
+        "title":"Training",
+        "description": "Train your skills",
+        "label": "Practice"
+      },
+      "sponsors": {
+        "title":"Sponsors",
+        "description": "Find sponsors to finance your fights and trainings",
+        "label": "Find Sponsors"
+      },
+      "fight": {
+        "title":"Fight",
+        "description": "Fight with other oponents",
+        "label": "Fight now"
+      }
+    }
+  },
+  "sponsors": {
+    "title": "Sponsors",
+    "description": "Select bellow your sponsors",
+    "card": {
+      "minLevel": "Min. Level",
+      "payment": "Monthly Payment",
+      "sign": "Sign Contract"
+    },
+    "list": {
+      "joe_bakery": "Joe's Bakery",
+      "repairs_store": "Three bros repair shop",
+      "tech_store": "Around the corner tech store",
+      "market_store_chain": "Wallmart",
+      "fast_food_store_chain": "KFC",
+      "sports_company": "EverLast"
+    }
+  },
   "validations":{
     "required": "The field {$label} is required",
     "invalidEmail": "The field {$label} needs to have an valid e-mail address",

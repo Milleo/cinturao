@@ -1,4 +1,5 @@
 import React, { Component } from "react"
+import { Button } from "semantic-ui-react"
 
 class Fight extends Component{
     
@@ -9,4 +10,4 @@ class Fight extends Component{
   }
 }
 
-export default Fight;
+export default Fight

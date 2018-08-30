@@ -1,3 +1,6 @@
+/* Profile object specification
+ * for the Accounts module from Meteor */
+
 Accounts.onCreateUser(function(options, user){
   user.profile = {};
   user.profile["status"] = "new"
