@@ -33,7 +33,9 @@
     "logout": "Sair",
     "training": "Treinar",
     "fight": "Lutar",
-    "sponsors": "Patrocinadores"
+    "sponsors": "Patrocinadores",
+    "friends": "Amigos",
+    "ranking": "Ranking"
   },
   "player": {
     "register": {

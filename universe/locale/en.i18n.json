@@ -32,7 +32,9 @@
     "logout": "Sign out",
     "training": "Training",
     "fight": "Fight",
-    "sponsors": "Sponsors"
+    "sponsors": "Sponsors",
+    "friends": "Friends",
+    "ranking": "Ranking"
 
   },
   "player": {
