@@ -12,6 +12,7 @@ import Sponsors from "./modules/sponsors"
 import Fight from "./modules/fight"
 import Training from "./modules/training"
 import PlayerRegister from "./modules/player/register"
+import NoMatch from "./layouts/noMatchLayout"
 import i18n from "meteor/universe:i18n"
 
 class AppRouter extends Component {
@@ -46,10 +47,21 @@ class AppRouter extends Component {
     history.push("/login")
   }
 
+  isUserRegistered = () => {
+    if(this.props.user == undefined)
+      return false
+    return this.props.user.profile.status != "new"
+  }
+
   render(){
     if(!this.state.ready){
       this.loadTranslations()
     }
+    
+    let userRegistered = false  
+    if(Meteor.userId())
+      userRegistered = this.isUserRegistered()
+
 
     return <span>
       {this.state.ready && 
@@ -57,19 +69,29 @@ class AppRouter extends Component {
           <Switch>
             { (Meteor.userId())?
               <AppLayout langChangeCallback={this.langChange} handleLogout={this.handleLogout}>
-                <Route path="/" exact component={Dashboard} />
-                <Route path="/training" exact component={Training} />
-                <Route path="/sponsors" exact component={Sponsors} />
-                <Route path="/fight" exact component={Fight} />
-                <Route path="/player/register" exact component={PlayerRegister} />
+                { (this.props.user == undefined)?<div />:
+                  (userRegistered)? 
+                    <div>
+                      <Route path="/" exact component={Dashboard} />
+                      <Route path="/training" exact component={Training} />
+                      <Route path="/sponsors" exact component={Sponsors} />
+                      <Route path="/fight" exact component={Fight} />
+                    </div>:
+                    <div>
+                      <Redirect to="/player/register" />
+                      <Route path="/player/register" exact component={PlayerRegister} />
+                    </div> 
+                }
               </AppLayout>:
               <LoginLayout>
+                <Redirect to="/login" />
                 <Route path="/login" component={Login} langChangeCallback={this.langChange} />
                 <Route path="/forgot_password" component={RetrievePassword} langChangeCallback={this.langChange} />
                 <Route path="/signup" component={Signup} langChangeCallback={this.langChange} />
                 <Redirect to="/login" />
               </LoginLayout>
             }
+            <Route component={NoMatch} />
           </Switch>
         </BrowserRouter>
       }
@@ -77,4 +99,9 @@ class AppRouter extends Component {
   }
 }
 
-export default AppRouter
+
+export default withTracker( (props) => {
+  const user = Meteor.user()
+
+  return { user }
+})(AppRouter)

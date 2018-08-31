@@ -11,7 +11,7 @@ Accounts.onCreateUser(function(options, user){
   user.profile["xp"] = 0
   user.profile["xp_total"] = 0
   user.profile["stamina"] = 100
-  user.profile["sex"] = "male"
+  user.profile["gender"] = "male"
   user.profile["category"] = "amateur"
   user.profile["skills"] = {
     "endurace": 0,

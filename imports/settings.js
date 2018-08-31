@@ -9,6 +9,24 @@ export const game = {
   "genders": ["male", "female"]
 };
 
+export const totalXpByLevel = (level) => {
+  const XP_FACTOR = 1.35
+  const XP_BASE = 100
+  return Math.floor(((level - 1) * XP_FACTOR) * 100) + XP_BASE 
+}
+
+export const trainingRoutines = {
+  endurance: {
+    factor: null
+  },
+  strength: {
+    factor: { type: "weight" } 
+  },
+  reflexes: {
+    factor: { type: "weight", reverse: true }
+  }
+};
+
 export const locations = [
   { name: "gym", rentalValue: 0.0, minSponsors: 0, minLevel: 1 }, 
   { name: "local_stadium", rentalValue: 100.0, minSponsors: 0, minLevel: 5 }, 
