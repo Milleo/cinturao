@@ -1,9 +1,9 @@
 import React, { Component } from "react"
 import { Button, Divider, Form, Segment } from "semantic-ui-react"
 import { Link } from "react-router-dom"
-import T from "../../components/translation"
+import T from "../../components/Translation"
 import Validator from "../../libs/validator"
-import Messages from "../../components/messages"
+import Messages from "../../components/Messages"
 
 class Login extends Component{
   constructor(props){

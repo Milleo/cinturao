@@ -1,7 +1,7 @@
 import React, { Component } from "react"
 import { Grid, Message } from "semantic-ui-react"
 import { Link } from "react-router-dom"
-import LanguageSelector from "../components/languageSelector"
+import LanguageSelector from "../components/LanguageSelector"
 
 class LoginLayout extends Component{
 

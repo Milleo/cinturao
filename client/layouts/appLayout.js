@@ -1,9 +1,9 @@
 import React, { Component } from "react"
 import { withRouter } from "react-router-dom"
 import { Container, Dropdown, Grid, Icon, Input, Menu, Progress, Segment } from "semantic-ui-react"
-import LanguageSelector from "../components/languageSelector"
+import LanguageSelector from "../components/LanguageSelector"
 import PlayerCard from "../components/PlayerCard"
-import T from "../components/translation"
+import T from "../components/Translation"
 import { Link } from "react-router-dom"
 import { withTracker } from "meteor/react-meteor-data"
 

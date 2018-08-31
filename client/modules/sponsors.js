@@ -1,6 +1,6 @@
 import React, { Component } from "react"
 import { Button, Card } from "semantic-ui-react"
-import T from "../components/translation"
+import T from "../components/Translation"
 import { sponsors } from "/imports/settings"
 import { withTracker } from "meteor/react-meteor-data"
 
@@ -14,8 +14,7 @@ class Sponsors extends Component{
         const sponsorName = i18n.__("sponsors.list." + item.name)
         if(profile.level > item.minLevel)
           ableToSign = true
-        
-    
+
         return <Card>
           <Card.Content>
             <Card.Header>{sponsorName}</Card.Header>

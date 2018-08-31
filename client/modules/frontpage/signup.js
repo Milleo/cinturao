@@ -3,7 +3,7 @@ import { Button, Divider, Form, Header, Segment } from "semantic-ui-react"
 import { browserHistory } from "react-router"
 import { Link } from "react-router-dom"
 import Validator from "../../libs/validator"
-import Messages from "../../components/messages"
+import Messages from "../../components/Messages"
 
 class Signup extends Component{
   constructor(props){

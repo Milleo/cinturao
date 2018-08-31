@@ -1,8 +1,8 @@
 import React, { Component } from "react"
 import { Button, Divider, Grid, Form, Input } from "semantic-ui-react"
-import T from "../../components/translation"
+import T from "../../components/Translation"
 import { game } from "../../../imports/settings"
-import Messages from "../../components/messages"
+import Messages from "../../components/Messages"
 
 class PlayerRegister extends Component{
   constructor(props){

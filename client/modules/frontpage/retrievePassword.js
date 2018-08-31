@@ -1,8 +1,8 @@
 import React, { Component } from "react"
 import { Button, Divider, Form, Header, Segment } from "semantic-ui-react"
 import { Link } from "react-router-dom"
-import T from "../../components/translation"
-import Messages from "../../components/messages"
+import T from "../../components/Translation"
+import Messages from "../../components/Messages"
 import Validator from "../../libs/validator"
 
 class RetrievePassword extends Component{

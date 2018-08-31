@@ -1,7 +1,7 @@
 import React, { Component } from "react"
 import { Button, Card } from "semantic-ui-react"
 import { Link } from "react-router-dom"
-import T from "../components/translation"
+import T from "../components/Translation"
 
 class Dashboard extends Component{
   constructor(props){
