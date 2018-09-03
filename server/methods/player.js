@@ -93,5 +93,17 @@ Meteor.methods({
     check(query, String)
     const usersFound = Meteor.users.find({ username: new RegExp(query, "i") }).fetch()
     return usersFound
+  },
+  "player.checkUnique": (field, value) => {
+    check(field, String)
+    check(value, String)
+    
+    let query = { "emails.address": value }
+    if(field == "username")
+      query = { username: value }
+
+    const usersFound = Meteor.users.find(query).fetch()
+
+    return usersFound.length == 0
   }
 });

@@ -4,6 +4,7 @@
   "common": {
     "email": "E-mail",
     "name": "Name",
+    "username": "Username",
     "password": "Password",
     "back": "Back",
     "random": "Randomize"
@@ -102,6 +103,8 @@
     "invalidEmail": "The field {$label} needs to have an valid e-mail address",
     "lengthMin": "The field {$label} must have at leat {$min} chars",
     "lengthMinMax": "The field {$label} must have between {$min} and {$max} chars",
-    "equals": "The field {$label} doesn't matches the field {$target}"
+    "equals": "The field {$label} doesn't matches the field {$target}",
+    "uniqueUsername": "The {$label} has been already taken",
+    "unique": "The {$label} has been already registered"
   }
 }

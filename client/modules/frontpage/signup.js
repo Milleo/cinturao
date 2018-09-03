@@ -1,5 +1,5 @@
 import React, { Component } from "react"
-import { Button, Divider, Form, Header, Segment } from "semantic-ui-react"
+import { Button, Divider, Form, Header, Message, Segment } from "semantic-ui-react"
 import { browserHistory } from "react-router"
 import { Link } from "react-router-dom"
 import Validator from "../../libs/validator"
@@ -11,6 +11,7 @@ class Signup extends Component{
     
     this.state = {
       "name": "",
+      "username": "",
       "email": "",
       "password": "",
       "confirmPassword": ""
@@ -18,11 +19,17 @@ class Signup extends Component{
   } 
   handleSignUpSubmit = () => {
     const form = {
+      "username": {
+        label: i18n.__("common.username"),
+        rules: ["required"],
+        value: this.state.username
+      },
       "name": {
         label: i18n.__("common.name"),
         rules: ["required" ],
         value: this.state.name
       },
+
       "email": {
         label: i18n.__("common.email"),
         rules: ["required", "isEmail"],
@@ -45,18 +52,64 @@ class Signup extends Component{
       Accounts.createUser({
         email: this.state.email,
         name: this.state.name,
+        username: this.state.username,
         password: this.state.password
+      }, (error) => {
+        if(!error)
+          this.props.history.push("/player/register")
+        else
+          this.setState({ messages: { type: "error", content: error.reason  }})
       });
 
-      this.props.history.push("/login", { messages: { type: "success", content: i18n.__("login.signup.successMessage") } })
+
     }else{
       this.setState({ messages: { type: "error", content: result.errors }})
     }
   }
 
   handleValueChange = (e) => {
+    const fieldName = e.target.name
+
+    if(fieldName == "username" || fieldName == "email"){
+      if(fieldName == "username"){
+        this.setState({ messageUsername: null, userUniqueLoad: true })
+      }else{
+        this.setState({ messageEmail: null , emailUniqueLoad: true})
+      }
+
+      Meteor.call("player.checkUnique", fieldName, e.target.value, (err, result) => {
+        if(!result){
+          if(fieldName == "username"){
+            const label = i18n.__("common.username")
+            this.setState({
+              messageUsername: i18n.__("validations.uniqueUsername", { label }),
+              userUniqueLoad: false
+            })
+          }else{
+            const label = i18n.__("common.email")
+            this.setState({
+              messageEmail: i18n.__("validations.unique", { label }),
+              emailUniqueLoad: false
+            })
+          }
+        }else{
+          if(fieldName == "username"){
+            this.setState({
+              validUsername: true, 
+              userUniqueLoad: false
+            })
+          }else{
+            this.setState({
+              validEmail: true,
+              userUniqueLoad: false
+            })
+          }
+        }
+      })
+    }
+
     this.setState({
-      [e.target.name]: e.target.value
+      [fieldName]: e.target.value
     })
   }
 
@@ -71,7 +124,14 @@ class Signup extends Component{
         </Form.Group>
         <Form.Group widths="equal">  
           <Form.Field>
-            <Form.Input name="email" label={i18n.__("common.email")} fluid type="email"  onChange={ this.handleValueChange }/>
+            <Form.Input name="username" label={i18n.__("common.username")} fluid  onChange={ this.handleValueChange } loading={this.state.userUniqueLoad} />
+            <Message negative size="tiny" content={this.state.messageUsername} hidden={!this.state.messageUsername } />
+          </Form.Field>
+        </Form.Group>
+        <Form.Group widths="equal">  
+          <Form.Field>
+            <Form.Input name="email" label={i18n.__("common.email")} fluid type="email"  onChange={ this.handleValueChange } loading={this.state.emailUniqueLoad} />
+            <Message negative size="tiny" content={this.state.messageEmail} hidden={!this.state.messageEmail } />
           </Form.Field>
         </Form.Group>
         <Form.Group widths="equal">  

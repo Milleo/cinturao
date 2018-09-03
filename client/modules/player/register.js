@@ -33,6 +33,13 @@ class PlayerRegister extends Component{
     })
   }
 
+  handleWeightChange = (e, target) => {
+    this.setState({ weight: target.value })
+  }
+  handleAgeChange = (e, target) => {
+    this.setState({ age: target.value })
+  }
+
   /* TODO: Adapt the random values to the game settings constants */
   randomize = () => {
     this.setState({
@@ -84,11 +91,11 @@ class PlayerRegister extends Component{
             <h2><T>player.register.playerInfo</T></h2>
             <Form.Field>
               <label><T>player.register.weight</T></label>
-              <Input name="weight" type="number" min={game.minWeight} max={game.maxWeight} label="Kg" value={this.state.weight} labelPosition="right" />
+              <Input name="weight" type="number" min={game.minWeight} max={game.maxWeight} label="Kg" value={this.state.weight} labelPosition="right" onChange={this.handleWeightChange} />
             </Form.Field>
             <Form.Field>
               <label><T>player.register.age</T></label>
-              <Input name="age" type="number" min={game.minAge} max={game.maxAge} label={i18n.__("player.register.years")} value={this.state.age} labelPosition="right" />
+              <Input name="age" type="number" min={game.minAge} max={game.maxAge} label={i18n.__("player.register.years")} value={this.state.age} labelPosition="right" onChange={this.handleAgeChange} />
             </Form.Field>
             <Form.Field>
               <label><T>player.register.gender</T></label>

@@ -4,6 +4,7 @@
   "common": {
     "email": "E-mail",
     "name": "Nome",
+    "username": "Nome de usuário",
     "password": "Senha",
     "back": "Voltar",
     "save": "Salvar",
@@ -102,7 +103,9 @@
     "invalidEmail": "O campo {$label} precisa ter um e-mail válido",
     "lengthMin": "O campo {$label} precisa ter no mínimo {$min} caracteres",
     "lengthMinMax": "O campo {$label} precisa ter entre {$min} e {$max} caracteres",
-    "equals": "O campo {$label} não confere com o campo {$target}"
+    "equals": "O campo {$label} não confere com o campo {$target}",
+    "uniqueUsername": "O {$label} já está em uso",
+    "unique": "O {$label} já foi cadastrado"
   }
 }
 
