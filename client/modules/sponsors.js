@@ -5,6 +5,10 @@ import { sponsors } from "/imports/settings"
 import { withTracker } from "meteor/react-meteor-data"
 
 class Sponsors extends Component{
+  handleContractSign = (contract) => {
+    Meteor.call("contract.sign", contract)
+  }
+
   renderSponsors(){
     const { profile } = this.props.user
 
@@ -15,15 +19,30 @@ class Sponsors extends Component{
         if(profile.level > item.minLevel)
           ableToSign = true
 
+        let hasSigned = false
+        if(profile.sponsors){
+          profile.sponsors.forEach((sponsor) => {
+            if(sponsor.name == item.name){
+              hasSigned = true
+              return
+            }
+          })
+        }
+
         return <Card>
           <Card.Content>
             <Card.Header>{sponsorName}</Card.Header>
             <Card.Meta><T>sponsors.card.minLevel</T>: {item.minLevel}</Card.Meta>
             <Card.Meta><T>sponsors.card.payment</T>: ${item.monthPayment}</Card.Meta>
           </Card.Content>
-          <Card.Content extra>
-            <Button positive fluid disabled={!ableToSign} content={i18n.__("sponsors.card.sign")} />
-          </Card.Content>
+          { !hasSigned && <Card.Content extra>
+            <Button
+              positive
+              fluid
+              disabled={!ableToSign}
+              content={i18n.__("sponsors.card.sign")}
+              onClick={() => this.handleContractSign(item.name)} />
+          </Card.Content> }
         </Card>
       })}
     </Card.Group>
