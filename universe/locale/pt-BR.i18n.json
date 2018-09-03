@@ -98,6 +98,14 @@
       "sports_company": "EverLast"
     }
   },
+  "training":{
+    "title": "Treinamento",
+    "list": {
+      "reflexes": "Reflexos",
+      "strenght": "Força",
+      "endurance": "Resistência"
+    }
+  },
   "validations":{
     "required": "O campo {$label} é obrigatório",
     "invalidEmail": "O campo {$label} precisa ter um e-mail válido",
@@ -108,4 +116,3 @@
     "unique": "O {$label} já foi cadastrado"
   }
 }
-
